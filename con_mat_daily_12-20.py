@@ -9,7 +9,6 @@ import day_classify as dc
 #from rain_classify import rain_classifier
 from conmat_classify import mat_rain_classifier
 from month_classifier import Rainfall_Year
-from monthly_mat_classifier import monthly_rain_classifier
 
 #Region 77.4684E, 12.7098N, 77.7129E, 13.1081N
 
