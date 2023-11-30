@@ -12,55 +12,7 @@ from month_classifier import Rainfall_Year
 
 #Region 77.4684E, 12.7098N, 77.7129E, 13.1081N
 
-#--------------------------------------Station 1 Data-----------------------------------------
-
-list01_11 = ['AG', 'AH', 'AI', 'AJ', 'AK', 'AL', 'AN', 'AO', 'AP', 'AQ'] #include 'AM' for 2007
-list12_22 = ['AR', 'AS','AT', 'AU', 'AV', 'AW', 'AX', 'AY', 'AZ']
-list2 =['D','H', 'L', 'P', 'T','X', 'AB', 'AF', 'AJ', 'AN', 'AR']
-
-
-bang_stat1_df4 = pd.DataFrame()
-bang_stat1_df5 = pd.DataFrame()
-
-
-for m in list01_11:
-    bang_stat1_4 = pd.read_excel('DataSheet1.xlsx', usecols=m)
-    bang_stat1_df4 = pd.concat([bang_stat1_df4, (bang_stat1_4[1:369])], axis = 0, ignore_index= True)
-bang_stat1_df4 = bang_stat1_df4.stack().reset_index()
-
-
-for n in list12_22:
-    bang_stat1_5 = pd.read_excel('DataSheet1.xlsx', usecols=n)
-    bang_stat1_df5 = pd.concat([bang_stat1_df5, (bang_stat1_5[1:369])], axis = 0, ignore_index= True)
-bang_stat1_df5 = bang_stat1_df5.stack().reset_index()
-
-bang_stat1_df4.rename(columns = {0: 'Rainfall'}, inplace=True)
-bang_stat1_df5.rename(columns = {0: 'Rainfall'}, inplace=True)
-
-
-bang_stat1_df4['Rainfall'] = pd.to_numeric(bang_stat1_df4['Rainfall'], errors = 'coerce')
-df4_rarr = bang_stat1_df4['Rainfall'].array
-df4_rarr = np.insert(df4_rarr, 0, 0.0)
-#df4_rarr = np.delete(df4_rarr, 4017)   #include when including 2007
-
-bang_stat1_df5['Rainfall'] = pd.to_numeric(bang_stat1_df5['Rainfall'], errors = 'coerce')
-df5_rarr = bang_stat1_df5['Rainfall'].array
-df5_rarr = np.insert(df5_rarr, 0, 0.0)
-df5_rarr = np.delete(df5_rarr, 3288)
-
-bang_stat1_4_month2001 = dc.month_rain_getter(df4_rarr[1:369])
-bang_stat1_4_array = np.array(bang_stat1_4_month2001)
-bang_stat1_4_array_test = np.array(bang_stat1_4_month2001)
-
-for num1 in range(1, 11):
-    num2 = num1 + 1
-    if num2/4 ==1 or num2/7 == 1:
-        bang_stat1_4_iter = dc.month_rain_getter(df4_rarr[(369*num1):(369*num2)], leap = True)
-        bang_stat1_4_array_test = np.append(bang_stat1_4_array_test, bang_stat1_4_iter)
-    else:
-        bang_stat1_4_iter = dc.month_rain_getter(df4_rarr[(369*num1):(369*num2)])
-        bang_stat1_4_array_test = np.append(bang_stat1_4_array_test, bang_stat1_4_iter)
-
+df5_rarr = RAINFALL_DATA
 
 #----------------------------------- IMERG Data ------------------------------------
 
