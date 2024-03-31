@@ -12,6 +12,9 @@ from month_classifier import Rainfall_Year
 
 #Region 77.4684E, 12.7098N, 77.7129E, 13.1081N
 
+
+#================================= Station Data ====================================
+
 df5_rarr = RAINFALL_DATA
 
 #----------------------------------- IMERG Data ------------------------------------
